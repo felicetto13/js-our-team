@@ -55,7 +55,7 @@ const ourTeam = [
 
 
 //Milestone 1
-
+//stampa dati. Utilizzo sia il console.log che il console.table vista la stampa di un array di oggetti
 stampaDatiTeam();
 
 function stampaDatiTeam() {
@@ -84,13 +84,16 @@ function stampaDatiTeam() {
             </div>
         </div>    
 */
+
+//creo una variabile in cui inserisco il contenitore
 const container = document.getElementById("team-container");
 
+//con un ciclo richiamo la funzione che mi permetterà di creare i vari elementi che poi andrò ad appendere al contenitore padre dichiarato in precedenza
 for (let i = 0; i < ourTeam.length; i++){
     container.append(createContentContainer(ourTeam[i]));
 }
 
-
+// La funzione utilizzata creerà gli elementi necessari a contenere le informazioni di ogni membro del team
 function createContentContainer (memberTeam) {
 
     const divTeamCard = document.createElement("div")
