@@ -23,33 +23,33 @@ Cosa conterrà il campo che rappresenta la foto in ciascun oggetto? Come possiam
 const ourTeam = [
     {
         nome: "Wayne Barnett",
-        ruolo:"Fouder & CEO",
+        ruolo: "Fouder & CEO",
         foto: "./img/wayne-barnett-founder-ceo.jpg",
     },
     {
-        nome: "Angela Caroll" ,
-        ruolo: "Chief Editor" ,
-        foto: "./img/angela-caroll-chief-editor.jpg" ,
+        nome: "Angela Caroll",
+        ruolo: "Chief Editor",
+        foto: "./img/angela-caroll-chief-editor.jpg",
     },
     {
-        nome: "Walter Gordon" ,
-        ruolo: "Office Manager" ,
-        foto: "./img/walter-gordon-office-manager.jpg" ,
+        nome: "Walter Gordon",
+        ruolo: "Office Manager",
+        foto: "./img/walter-gordon-office-manager.jpg",
     },
     {
-        nome: "Angela Lopez" ,
-        ruolo: "Social Media Manager" ,
-        foto: "./img/angela-lopez-social-media-manager.jpg" ,
+        nome: "Angela Lopez",
+        ruolo: "Social Media Manager",
+        foto: "./img/angela-lopez-social-media-manager.jpg",
     },
     {
-        nome: "Scott Estrada" ,
-        ruolo: "Developer" ,
-        foto: "./img/scott-estrada-developer.jpg" ,
+        nome: "Scott Estrada",
+        ruolo: "Developer",
+        foto: "./img/scott-estrada-developer.jpg",
     },
     {
-        nome: "Barbara Ramos" ,
-        ruolo: "Graphic Designer" ,
-        foto: "./img/barbara-ramos-graphic-designer.jpg" ,
+        nome: "Barbara Ramos",
+        ruolo: "Graphic Designer",
+        foto: "./img/barbara-ramos-graphic-designer.jpg",
     },
 ]
 
@@ -58,9 +58,9 @@ const ourTeam = [
 
 stampaDatiTeam();
 
-function stampaDatiTeam (){
-    for(let i = 0; i < ourTeam.length; i++){
-        console.log("Nome: " + ourTeam[i].nome + ", Ruolo: " + ourTeam[i].ruolo + ", foto: " + ourTeam[i].foto + ";" )
+function stampaDatiTeam() {
+    for (let i = 0; i < ourTeam.length; i++) {
+        console.log("Nome: " + ourTeam[i].nome + ", Ruolo: " + ourTeam[i].ruolo + ", foto: " + ourTeam[i].foto + ";")
     }
     console.table(ourTeam);
 }
@@ -70,8 +70,52 @@ function stampaDatiTeam (){
 
 // Milestone 2
 
+/* 
+        <div class="team-card">         //divTeamCard
+            <div class="card-image">    //divCardImage
+            <img                        //imgCard
+                src="img/wayne-barnett-founder-ceo.jpg"
+                alt="Wayne Barnett"
+            />
+            </div>
+            <div class="card-text">     //divCardText
+            <h3>Wayne Barnett</h3>      //h3        
+            <p>Founder & CEO</p>        //p
+            </div>
+        </div>    
+*/
 const container = document.getElementById("team-container");
 
+for (let i = 0; i < ourTeam.length; i++){
+    container.append(createContentContainer(ourTeam[i]));
+}
+
+
+function createContentContainer (memberTeam) {
+
+    const divTeamCard = document.createElement("div")
+    const divCardImage = document.createElement("div")
+    const divCardText = document.createElement("div")
+    const h3 = document.createElement("h3")
+    const p = document.createElement("p")
+    const imgCard = document.createElement("img")
+
+    p.append(memberTeam.ruolo);
+    h3.append(memberTeam.nome);
+    divCardText.classList.add("card-text");
+    divCardText.prepend(h3,p);
+
+    imgCard.src =  memberTeam.foto;
+    imgCard.setAttribute("alt", memberTeam.nome);
+    divCardImage.classList.add("card-image");
+    divCardImage.append(imgCard);
+
+    divTeamCard.classList.add("team-card");
+    divTeamCard.append(divCardImage,divCardText);
+
+    return divTeamCard;
+
+}
 
 
 //
