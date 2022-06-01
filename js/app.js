@@ -68,7 +68,7 @@ function stampaDatiTeam() {
 //
 
 
-// Milestone 2
+// Milestone 2 + BONUS
 
 /* 
         <div class="team-card">         //divTeamCard
